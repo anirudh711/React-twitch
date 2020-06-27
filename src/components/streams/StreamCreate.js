@@ -1,10 +1,12 @@
 import React from 'react';
 import {Field,reduxForm} from 'redux-form';
+import {connect} from 'react-redux';
+import {createStream} from '../../actions'
 class StreamCreate extends React.Component{
 
 //submit form helper
-onSubmit(formValues){
-    console.log(formValues)
+onSubmit=(formValues)=> {
+    this.props.createStream(formValues)
 }
 
 //error showing up on screen helper
@@ -57,7 +59,8 @@ const validate=(formValues)=>{
 
 //redux form here acts as a connect() , has its own reducer but we have to wire it up
 //to our native reducer
-export default reduxForm({
+const formWrapper=reduxForm({
     form: 'streamCreate',
     validate:validate
 })(StreamCreate);
+export default connect(null, {createStream})(formWrapper)
