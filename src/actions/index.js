@@ -1,4 +1,5 @@
-import streams from '../apis/streams'
+import streams from '../apis/streams';
+import history from '../history'
 import {SIGN_IN,
         SIGN_OUT,
         CREATE_STREAM,
@@ -23,9 +24,12 @@ export const signOut =()=>{
 
 //this is creating a stream
 export const createStream =(formValues)=>{
-    return async(dispatch)=>{
-        const response=await streams.post('/streams',formValues)
+    return async(dispatch,getState)=>{
+        const {userId}=getState().auth;
+        const response=await streams.post('/streams',{...formValues,userId})
         dispatch({type:CREATE_STREAM, payload:response.data})
+        //writing own history object to programmatically navigate
+        history.push('/')
     }
 }
 //this fetches more than one stream(array of data)
