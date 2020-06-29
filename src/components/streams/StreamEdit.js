@@ -14,12 +14,12 @@ class StreamEdit extends React.Component {
     if (!this.props.stream) {
       return <div>Loading..</div>;
     }
-
+    //when you call an :id , intially there is this.props that has id in it so use it.
     return (
       <div>
         <h3>Edit a Stream</h3>
         <StreamForm
-          initialValues={{
+          initialValues={{     //initalValues is inbuilt 
             title: this.props.stream.title,
             description: this.props.stream.description,
           }}
