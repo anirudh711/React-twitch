@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This project is a basic mockup of the streaming application twitch in react. It is connected to a REST API in the backend where it goes through CRUD operations on creating different streams.
+It is also connected to a RTMP server(port 1935) in order to stream video directly from the OBS to the server and view it on the site using http server at port 8000.
+
+
 ## Available Scripts
 
 In the project directory, you can run:
